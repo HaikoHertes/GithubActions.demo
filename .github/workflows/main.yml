@@ -24,6 +24,7 @@ jobs:
          type: deployment
          operation: create
          name: 'bicep-deploy'
+         scope: resourceGroup
          subscription-id: ${{ secrets.AZURE_SUB_ID }}
          resource-group-name: 'RG-GitHubActions-Demo'
          template-file: './bicep/storageAccount.bicep'
