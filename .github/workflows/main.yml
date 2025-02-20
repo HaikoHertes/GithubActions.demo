@@ -16,3 +16,17 @@ jobs:
      - name: Checkout
        id: checkout
        uses: actions/checkout@v4
+
+     - name: Deploy
+       id: deploy
+       uses: azure/bicep-deploy@v2
+       with: 
+         type: deployment
+         operation: create
+         name: 'bicep-deploy'
+         subscription-id: ${{ secrets.AZURE_SUB_ID }}
+         resource-group-name: 'RG-GitHubActions-Demo'
+         template-file: './bicep/storageAccount.bicep'
+         parameters: '{"parStorageAccountName": "githubactionsdemohertes",
+                       "parStorageSKU": "Standard_LRS"}'
+
